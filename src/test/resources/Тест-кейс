@@ -1,0 +1,53 @@
+ТЕСТОВОЕ ЗАДАНИЕ
+
+Необходимо:
+•    Необходимо создать maven проект и написать автотест по сценарию ниже
+•    Выложить проект на github
+
+Рекомендуется:
+•    Использование паттерна PageObject
+•    Использование различных видов селекторов (css, xpath)
+•    Использование тестовых фреймворковTestNG или JUnit
+•    Использование аннотаций из библиотеки Allure
+
+Сценарий автотеста
+1.	Перейти на https://demoqa.com/
+2.	Нажать на «Elements»  //div[@class='card-body']/h5[.='Elements']
+3.	Нажать на «Text box»  //span[.='Text Box']
+4.	Заполнить поля: Full Name,Email,Current Address,Permanent Address
+//input[@id='userName']
+//input[@id='userEmail']
+//textarea[@placeholder='Current Address']
+//textarea[@id='permanentAddress'
+
+Нажать на кнопку «Submit» //button[@id='submit']
+5.	Проверить, что данные в блоке сохранены корректно //div[@class='border col-md-12 col-sm-12']
+6.	Нажать на «Buttons» //li[@id='item-4']
+7.	Нажать на кнопку «Clickme» //*[@id="prWNT"]
+8.	Проверить, что появился текст «Youhavedone a dynamicclick» //p[@id='dynamicClickMessage']
+9.	Нажать на кнопку «Right Clickme» //button[@id='rightClickBtn']
+10.	Проверить, что появился текст «Youhavedone a rightclick» //*[@id='rightClickMessage']
+11.	Нажатьнакнопку «Double Clickme» //*[@id='doubleClickBtn']
+12.	Проверить, что появился текст «Youhavedone a doubleclick» » //*[@id='doubleClickMessage']
+13.
+Нажать на«Alerts, Frame & Windows» //*[@id='app']//*[.='Alerts, Frame & Windows']
+14.
+15.	Нажатьна«Browser Windows» //span[.='Browser Windows']
+16.	Нажать на кнопку «NewTab»
+17.	Закрыть новую вкладку
+18.	Нажать на кнопку «Newwindow»
+19.	 Закрыть новое окно
+20.	Нажатьна«Alerts»
+21.	Нажатьнакнопку «Clickme»  рядомсClick Button to see alert
+22.	Закрыть уведомление
+23.	Нажатьнакнопку «Clickme»  рядомсOn button click, alert will appear after 5 seconds
+24.	Закрыть уведомление
+25.	Нажатьнакнопку «Clickme»  рядомсOn button click, confirm box will appear
+26.	Нажать на кнопку «Да» в уведомление
+27.	Проверить, что появился текст Youselected Ok
+28.	Нажатьнакнопку «Clickme»  рядомсOn button click, prompt box will appear
+29.	Заполнить поле в уведомление данными: Testname
+30.	Проверить, что появился текст Youentered Testname
+
+
+
