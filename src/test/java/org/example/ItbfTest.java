@@ -86,7 +86,7 @@ public class ItbfTest extends BasePage{
         driver.get("https://demoqa.com/");
 
         driver.findElement(By.xpath("//div[@class='card-body']/h5[.='Elements']")).click(); // Клик по меню Elements
-        driver.findElement(By.xpath("//*[@id=\"item-0\"]")).click();
+        driver.findElement(By.xpath("//span[.='Text Box']")).click();
         driver.findElement(By.xpath("//input[@id='userName']")).sendKeys("Vasiliy Strlelnikov");
         driver.findElement(By.xpath("//input[@id='userEmail']")).sendKeys("VS2023@yandex.ru");
         driver.findElement(By.xpath("//textarea[@placeholder='Current Address']")).sendKeys("Moscow");
