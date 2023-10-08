@@ -9,47 +9,21 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.logging.LogEntries;
-import org.openqa.selenium.logging.LogEntry;
-import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-
 import java.time.Duration;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class ItbfTest extends BasePage{
+
+public class ItbfTest {
 
     static WebDriver driver;
+    WebDriverWait webDriverWait;
+    Actions actions;
 
-    Logger logger = LoggerFactory.getLogger("Тест");
+    JavascriptExecutor js = (JavascriptExecutor) driver;
 
-    public ItbfTest(WebDriver driver) {
 
-        super(driver);
-    }
 
-    public WebDriver getWebDriver(){
-
-        return this.driver;
-    }
-    JavascriptExecutor js = (JavascriptExecutor) getWebDriver();
-
-    // процедура логирования логов браузера для этого класса
-    void saveBrowserLogs() {
-        LogEntries browserLogs = getWebDriver().manage().logs().get(LogType.BROWSER);
-        List<LogEntry> allLogRows = browserLogs.getAll();
-
-        if (allLogRows.size() > 0) {
-            allLogRows.forEach(logEntry -> {
-                logger.debug("BROWSERLOGS: "+logEntry.getMessage());
-            });
-        }
-    }
 
     @BeforeAll
     static void registerDriver() {
@@ -62,7 +36,7 @@ public class ItbfTest extends BasePage{
     void setupBrowser() {
 
         driver = new ChromeDriver();
-        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(5));
         actions = new Actions(driver); //расширяет возможности по реализации действий
 
     }
@@ -81,7 +55,7 @@ public class ItbfTest extends BasePage{
     @Story("Прохождение пользователем по основному функционалу сайта")
 
 
-    void testDemoQa() {
+        void testDemoQa() throws InterruptedException {
 
         driver.get("https://demoqa.com/");
 
@@ -105,7 +79,7 @@ public class ItbfTest extends BasePage{
 
         driver.findElement(By.xpath("//li[@id='item-4']")).click(); // Клик по меню Buttons
         driver.findElement(By.xpath("//*[@id=\"prWNT\"]")).click(); // Нажимаем кнопку Click me
-        String s = driver.findElement(By.xpath("//p[@id='dynamicClickMessage']")).getText();
+        String m = driver.findElement(By.xpath("//p[@id='dynamicClickMessage']")).getText();
         assertTrue (s.equals("You have done a dynamic click"));
         Thread.sleep(5000);
 
@@ -113,7 +87,7 @@ public class ItbfTest extends BasePage{
                 .contextClick() // необходим клик правой кнопкой мыши
                 .pause(Duration.ofSeconds(3))
                 .perform();
-        String s = driver.findElement(By.xpath("//*[@id='rightClickMessage']")).getText();
+        String o = driver.findElement(By.xpath("//*[@id='rightClickMessage']")).getText();
         assertTrue (s.equals("You have done a right click"));
         Thread.sleep(5000);
 
@@ -121,7 +95,7 @@ public class ItbfTest extends BasePage{
                 .doubleClick() // необходим двойной клик кнопкой мыши
                 .pause(Duration.ofSeconds(3))
                 .perform();
-        String s = driver.findElement(By.xpath("//*[@id='doubleClickMessage']")).getText();
+        String p = driver.findElement(By.xpath("//*[@id='doubleClickMessage']")).getText();
         assertTrue (s.equals("You have done a double click"));
 
         actions.scrollToElement(driver.findElement(By.xpath("//*[@id='app']//*[.='Alerts, Frame & Windows']")))
@@ -146,6 +120,10 @@ public class ItbfTest extends BasePage{
         Alert alertCancel = driver.switchTo().alert();  // закрытие уведомления
         alertCancel.dismiss();
 
+    }
+
+    private WebDriver getWebDriver() {
+        return null;
     }
 
 
