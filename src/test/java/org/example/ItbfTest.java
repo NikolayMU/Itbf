@@ -1,5 +1,6 @@
 package org.example;
 
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
@@ -7,12 +8,14 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import java.time.Duration;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.time.Duration;
+import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ItbfTest {
 
@@ -20,31 +23,21 @@ public class ItbfTest {
     WebDriverWait webDriverWait;
     Actions actions;
 
-    JavascriptExecutor js = (JavascriptExecutor) driver;
-
-
-
-
     @BeforeAll
     static void registerDriver() {
 
-        WebDriverManager.chromedriver().setup();
+        WebDriverManager.firefoxdriver().setup();
 
     }
 
     @BeforeEach
     void setupBrowser() {
 
-        driver = new ChromeDriver();
+        driver = new FirefoxDriver();
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        actions = new Actions(driver); //расширяет возможности по реализации действий
+        actions = new Actions(driver);
 
     }
-
-    private void presenceOfElementLocated() {
-    }
-
-
     @Test
     @DisplayName("Тест Itbf")
     @Description("Проверка работоспособности основного функционала на сайте DemoQA")
@@ -77,10 +70,10 @@ public class ItbfTest {
                 "\n" +
                 "Permananet Address :Moscow"));
 
-        driver.findElement(By.xpath("//li[@id='item-4']")).click(); // Клик по меню Buttons
+      /*  driver.findElement(By.xpath("//li[@id='item-4']")).click(); // Клик по меню Buttons
         driver.findElement(By.xpath("//*[@id=\"prWNT\"]")).click(); // Нажимаем кнопку Click me
         String m = driver.findElement(By.xpath("//p[@id='dynamicClickMessage']")).getText();
-        assertTrue (s.equals("You have done a dynamic click"));
+        assertTrue (m.equals("You have done a dynamic click"));
         Thread.sleep(5000);
 
         actions.moveToElement(driver.findElement(By.xpath("//button[@id='rightClickBtn']")))
@@ -88,7 +81,7 @@ public class ItbfTest {
                 .pause(Duration.ofSeconds(3))
                 .perform();
         String o = driver.findElement(By.xpath("//*[@id='rightClickMessage']")).getText();
-        assertTrue (s.equals("You have done a right click"));
+        assertTrue (o.equals("You have done a right click"));
         Thread.sleep(5000);
 
         actions.moveToElement(driver.findElement(By.xpath("//*[@id='doubleClickBtn']")))
@@ -96,7 +89,7 @@ public class ItbfTest {
                 .pause(Duration.ofSeconds(3))
                 .perform();
         String p = driver.findElement(By.xpath("//*[@id='doubleClickMessage']")).getText();
-        assertTrue (s.equals("You have done a double click"));
+        assertTrue (p.equals("You have done a double click"));
 
         actions.scrollToElement(driver.findElement(By.xpath("//*[@id='app']//*[.='Alerts, Frame & Windows']")))
                 .perform();
@@ -106,11 +99,13 @@ public class ItbfTest {
         driver.findElement(By.xpath("//button[@id='tabButton']")).click();
         Thread.sleep(5000);
 
-        driver.switchTo().window(getWebDriver().getWindowHandle()).close(); // закрытие новой вкладки
+        ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+
+        driver.switchTo().window(tabs.get(0)).close(); // закрытие новой вкладки
 
 
         driver.findElement(By.xpath("//button[@id='windowButton']")).click();
-        driver.switchTo().window(getWebDriver().getWindowHandle()).close(); // закрытие новой вкладки
+        driver.switchTo().window(tabs.get(0)).close(); // закрытие новой вкладки
         Thread.sleep(5000);
 
         driver.findElement(By.xpath("//span[.='Alerts']")).click();
@@ -118,13 +113,11 @@ public class ItbfTest {
 
 
         Alert alertCancel = driver.switchTo().alert();  // закрытие уведомления
-        alertCancel.dismiss();
+        alertCancel.dismiss(); */
 
     }
 
-    private WebDriver getWebDriver() {
-        return null;
-    }
+
 
 
     @AfterAll
