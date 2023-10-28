@@ -6,7 +6,6 @@ import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -70,7 +69,7 @@ public class ItbfTest {
                 "\n" +
                 "Permananet Address :Moscow"));
 
-      /*  driver.findElement(By.xpath("//li[@id='item-4']")).click(); // Клик по меню Buttons
+        driver.findElement(By.xpath("//li[@id='item-4']")).click(); // Клик по меню Buttons
         driver.findElement(By.xpath("//*[@id=\"prWNT\"]")).click(); // Нажимаем кнопку Click me
         String m = driver.findElement(By.xpath("//p[@id='dynamicClickMessage']")).getText();
         assertTrue (m.equals("You have done a dynamic click"));
@@ -113,11 +112,9 @@ public class ItbfTest {
 
 
         Alert alertCancel = driver.switchTo().alert();  // закрытие уведомления
-        alertCancel.dismiss(); */
+        alertCancel.dismiss();
 
     }
-
-
 
 
     @AfterAll
