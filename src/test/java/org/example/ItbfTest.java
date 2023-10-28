@@ -44,7 +44,7 @@ public class ItbfTest {
     @Severity(SeverityLevel.CRITICAL)
     @Epic("Тестирование интерфейса сайта")
     @Feature("Тестирование по Чек-листу")
-    @Story("Прохождение пользователем по основному функционалу сайта")
+    @Story("Как пользователь я хочу проверить работу основных функций на сайте")
 
 
         void testDemoQa() throws InterruptedException {
